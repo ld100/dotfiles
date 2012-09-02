@@ -27,7 +27,38 @@ then
 fi
 
 ### History
-setopt histignorealldups sharehistory incappendhistory extendedhistory
+# If I type cd and then cd again, only save the last one
+setopt HIST_IGNORE_DUPS
+
+# Even if there are commands inbetween commands that are the same, still only save the last one
+setopt HIST_IGNORE_ALL_DUPS
+
+# Pretty    Obvious.  Right?
+setopt HIST_REDUCE_BLANKS
+
+# If a line starts with a space, don't save it.
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+
+# When using a hist thing, make a newline show the change before executing it.
+setopt HIST_VERIFY
+
+# share history between multiple sessions
+setopt SHARE_HISTORY
+
+# Don't overwrite, append!
+setopt APPEND_HISTORY
+
+# Write after each command
+# setopt INC_APPEND_HISTORY
+
+# Save the time and how long a command ran
+setopt EXTENDED_HISTORY
+
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -59,7 +90,10 @@ zmodload zsh/complist
 zstyle ':completion:*' menu yes select
 # Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
-    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+	'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+	
+# This gives more extensive tab completion
+setopt completeinword
 
 ### Colors
 ### OSX-specific color settings
@@ -85,12 +119,12 @@ if [ `uname` = "Linux" ];
 then
 	# set variable identifying the chroot you work in (used in the prompt below)
 	if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-	    debian_chroot=$(cat /etc/debian_chroot)
+		debian_chroot=$(cat /etc/debian_chroot)
 	fi
 
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	case "$TERM" in
-	    xterm-color) color_prompt=yes;;
+		xterm-color) color_prompt=yes;;
 	esac
 	
 	# uncomment for a colored prompt, if the terminal has the capability; turned
@@ -99,59 +133,93 @@ then
 	force_color_prompt=yes
 
 	if [ -n "$force_color_prompt" ]; then
-	    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-		# We have color support; assume it's compliant with Ecma-48
-		# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-		# a case would tend to support setf rather than setaf.)
-		color_prompt=yes
-	    else
-		color_prompt=
-	    fi
+		if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+			# We have color support; assume it's compliant with Ecma-48
+			# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+			# a case would tend to support setf rather than setaf.)
+			color_prompt=yes
+		else
+			color_prompt=
+		fi
 	fi
 	
 	if [ "$color_prompt" = yes ]; then
-	    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	else
-	    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 	fi
 	unset color_prompt force_color_prompt
 
 	# If this is an xterm set the title to user@host:dir
 	case "$TERM" in
 	xterm*|rxvt*)
-	    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	    ;;
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		;;
 	*)
-	    ;;
+		;;
 	esac
 
 	# enable color support of ls and also add handy aliases
 	if [ -x /usr/bin/dircolors ]; then
-	    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	    alias ls='ls --color=auto'
-	    #alias dir='dir --color=auto'
-	    #alias vdir='vdir --color=auto'
+		test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+		alias ls='ls --color=auto'
+		#alias dir='dir --color=auto'
+		#alias vdir='vdir --color=auto'
 
-	    alias grep='grep --color=auto'
-	    alias fgrep='fgrep --color=auto'
-	    alias egrep='egrep --color=auto'
+		alias grep='grep --color=auto'
+		alias fgrep='fgrep --color=auto'
+		alias egrep='egrep --color=auto'
 	fi
 fi
 
-#setopt no_beep
-setopt auto_cd
-setopt multios
+### Different options
+# setopt no_beep
+
+# Type ".." instead of "cd ..", "/usr/include" instead of "cd /usr/include".
+setopt AUTO_CD
+
+# allow functions to have local options
+setopt LOCAL_OPTIONS
+
+# allow functions to have local traps
+setopt LOCAL_TRAPS
+
+# Now we can pipe to multiple outputs!
+setopt MULTIOS
+
+# Spell check commands!  (Sometimes annoying)
+# setopt CORRECT
+
+# This will use named dirs when possible
+setopt AUTO_NAME_DIRS
+
+# 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+setopt RM_STAR_WAIT
+
 setopt cdablevarS
 
-if [[ x$WINDOW != x ]]
-then
-    SCREEN_NO="%B$WINDOW%b "
-else
-    SCREEN_NO=""
-fi
+# pound sign in interactive prompt
+# This is useful to remember command in your history without executing them.
+setopt interactivecomments 
+
+# Superglobs
+setopt extendedglob
+unsetopt caseglob
 
 # Setup the prompt with pretty colors
 setopt prompt_subst
+
+# only fools wouldn't do this ;-)
+export EDITOR="mcedit"
+
+if [[ x$WINDOW != x ]]
+then
+	SCREEN_NO="%B$WINDOW%b "
+else
+	SCREEN_NO=""
+fi
+
+
 
 
 ### Keyboard config
@@ -184,23 +252,23 @@ alias l='ls -CF'
 
 # Prompt-specific
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '○'
+	git branch >/dev/null 2>/dev/null && echo '±' && return
+	hg root >/dev/null 2>/dev/null && echo '☿' && return
+	echo '○'
 }
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+	[ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
 
 # Adility-specific functions
 function adility_prod_console() {
-  ssh -t deployer@adility.com '/var/data/www/apps/adilityshop/current/script/console production'
+	ssh -t deployer@adility.com '/var/data/www/apps/adilityshop/current/script/console production'
 }
 
 function adility_demo_console() {
-  ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
+	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
 }
 
 # My Utils
@@ -241,7 +309,7 @@ function install_linux_goodies() {
 	else
 		echo "Sorry, only debian-based distros are currently supported"
 		if [[ -x =yum ]]; then
-		  alias install_everything = ""
+			alias install_everything = ""
 		fi
 	fi
 	
@@ -259,38 +327,38 @@ function install_osx_goodies() {
 
 ### Git Functions
 zsh_git_invalidate_vars() {
-        export __CURRENT_GIT_VARS_INVALID=1
+	export __CURRENT_GIT_VARS_INVALID=1
 }
 zsh_git_compute_vars() {
-        export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
-        export __CURRENT_GIT_VARS_INVALID=
+	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
+	export __CURRENT_GIT_VARS_INVALID=
 }
 parse_git_branch() {
-        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) -- /' 
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) -- /' 
 }
 
 # Alternative git-branch func
 gitbranch() {
-  git_branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-  if [ $git_branch ]; then
-    echo "$git_branch"
-  fi
+	git_branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ $git_branch ]; then
+		echo "$git_branch"
+	fi
 }
 
 
 chpwd_functions+='zsh_git_chpwd_update_vars'
-    zsh_git_chpwd_update_vars() {
-            zsh_git_invalidate_vars
-    }
+	zsh_git_chpwd_update_vars() {
+		zsh_git_invalidate_vars
+	}
 
 preexec_functions+='zsh_git_preexec_update_vars'
-    zsh_git_preexec_update_vars() {
-            case "$(history $HISTCMD)" in 
-                    *git*) zsh_git_invalidate_vars ;;
-            esac
+	zsh_git_preexec_update_vars() {
+		case "$(history $HISTCMD)" in 
+			*git*) zsh_git_invalidate_vars ;;
+		esac
 }
 
 get_git_prompt_info() {
-        test -n "$__CURRENT_GIT_VARS_INVALID" && zsh_git_compute_vars
-        echo $__CURRENT_GIT_BRANCH
+	test -n "$__CURRENT_GIT_VARS_INVALID" && zsh_git_compute_vars
+	echo $__CURRENT_GIT_BRANCH
 }
