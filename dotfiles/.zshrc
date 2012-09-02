@@ -229,17 +229,31 @@ function install_goodies() {
 	if [ `uname` = "Linux" ];
 	then
 		echo "Installing Linux Ubuntu goodies..."
-		install_ubuntu_goodies
+		install_linux_goodies
 	fi
 }
 
-function install_ubuntu_goodies() {
-	sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
-	sysstat ccze pv logrotate rkhunter etckeeper
+function install_linux_goodies() {
+	alias install_everything = ""
+	if [[ -x =apt-get ]]; then
+		alias install_everything="	sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
+		sysstat ccze pv logrotate rkhunter etckeeper"
+	else
+		echo "Sorry, only debian-based distros are currently supported"
+		if [[ -x =yum ]]; then
+		  alias install_everything = ""
+		fi
+	fi
+	
+	install_everything
 }
 
 function install_osx_goodies() {
-	brew install wget midnight-commander pv
+	if [[ -x =brew ]]; then
+		brew install wget midnight-commander pv
+	else
+		echo "Please install Homebrew first"
+	fi
 }
 
 
