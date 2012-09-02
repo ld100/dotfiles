@@ -1,0 +1,38 @@
+[extensions]
+hgext.convert =
+#hgext.alias =
+hgext.graphlog =
+hgext.purge =
+hgext.color =
+hgext.fetch =
+hgext.mq =
+
+[ui]
+username = Alexander Lockshyn <info@lab37.com>
+
+[alias]
+slog = log --template '{date|shortdate} [{rev}:{node|short}] {author|person}: {desc|firstline}\n' -l 10
+wlog = log --style compact -l 10
+sglog = glog --style compact -l 10
+
+[color]
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
+status.clean = none
+status.copied = none
+qseries.applied = blue bold underline
+qseries.unapplied = black bold
+qseries.missing = red bold
+diff.diffline = bold
+diff.extended = cyan bold
+diff.file_a = red bold
+diff.file_b = green bold
+diff.hunk = magenta
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = bold red_background

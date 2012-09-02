@@ -1,0 +1,36 @@
+[github]
+    user = ld100
+    token = c696df974c45fb276b14cf15ce3508e8
+[user]
+    name = Alexander Lockshyn
+    email = info@lab37.com
+[core]
+    editor = mcedit
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+    plain = yellow
+[color "diff"]
+    meta = yellow bold
+    frag = magenta
+    old = red
+    new = green
+    whitespace = red reverse
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[alias]
+    logg = "log --pretty=format:'%Cblue%cr %Cgreen%an %Cred%h %Creset%s' --graph"
+    ci = "commit"
+    st = "status"
+    co = "checkout"
+    wc = "whatchanged"
+    br = "branch"
