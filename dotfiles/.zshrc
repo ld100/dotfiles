@@ -130,6 +130,14 @@ then
 		alias fgrep='fgrep --color=auto'
 		alias egrep='egrep --color=auto'
 	fi
+	
+	# Tmux/Screen mouse fixes
+	if [ $TERM = "screen" ]; then
+	    export TERM=xterm-color
+	fi
+	if [ -n "$TMUX" ]; then
+	    export COLORTERM=rxvt
+	fi
 
 	# some more ls aliases
 	alias ll='ls -alF'
