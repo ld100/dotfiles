@@ -27,7 +27,7 @@ then
 fi
 
 ### History
-setopt histignorealldups sharehistory
+setopt histignorealldups sharehistory incappendhistory extendedhistory
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -214,6 +214,32 @@ function start_pg() {
 
 function stop_pg() {
 	pg_ctl -D /usr/local/var/postgres stop -s -m fast
+}
+
+function install_goodies() {
+	# Tool I use:
+	# nmap netdiag htop mc screen tmux vim ne wget sysstat
+	# fish zsh ccze pv logrotate rkhunter etckeeper
+	if [ `uname` = "Darwin" ];
+	then
+		echo "Installing OSX goodies..."
+		install_osx_goodies
+	fi
+	
+	if [ `uname` = "Linux" ];
+	then
+		echo "Installing Linux Ubuntu goodies..."
+		install_ubuntu_goodies
+	fi
+}
+
+function install_ubuntu_goodies() {
+	sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
+	sysstat ccze pv logrotate rkhunter etckeeper
+}
+
+function install_osx_goodies() {
+	brew install wget midnight-commander pv
 }
 
 
