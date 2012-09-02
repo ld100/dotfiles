@@ -26,6 +26,12 @@ then
 	export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
+### History
+setopt histignorealldups sharehistory
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
 
 ### Command line prompt
 
@@ -46,8 +52,11 @@ typeset -ga chpwd_functions
 export __CURRENT_GIT_BRANCH=
 export __CURRENT_GIT_VARS_INVALID=1
 
-#### Auto completion
-autoload -U compinit compinit zmodload zsh/complist zstyle ':completion:*' menu yes select
+### Auto completion (New Style)
+autoload -Uz compinit
+compinit
+zmodload zsh/complist
+zstyle ':completion:*' menu yes select
 
 ### Colors
 ### OSX-specific color settings
@@ -164,9 +173,6 @@ bindkey "\eOc" forward-word
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-### Completions
-
 
 ### Functions
 
