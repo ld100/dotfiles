@@ -117,15 +117,24 @@ fi
 ### Linux-specific color settings
 if [ `uname` = "Linux" ];
 then
-	# set a fancy prompt (non-color, unless we know we "want" color)
-	case "$TERM" in
-		xterm-color) color_prompt=yes;;
-	esac
+	export LS_COLORS='di=36;40:ln=35;40:so=31;40:pi=33;40:ex=32;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 	
-	# uncomment for a colored prompt, if the terminal has the capability; turned
-	# off by default to not distract the user: the focus in a terminal window
-	# should be on the output of commands, not on the prompt
-	force_color_prompt=yes
+	# enable color support of ls and also add handy aliases
+	if [ -x /usr/bin/dircolors ]; then
+	    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	    alias ls='ls --color=auto'
+	    #alias dir='dir --color=auto'
+	    #alias vdir='vdir --color=auto'
+
+	    alias grep='grep --color=auto'
+	    alias fgrep='fgrep --color=auto'
+	    alias egrep='egrep --color=auto'
+	fi
+
+	# some more ls aliases
+	alias ll='ls -alF'
+	alias la='ls -A'
+	alias l='ls -CF'
 fi
 
 ### Different options
