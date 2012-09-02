@@ -57,6 +57,7 @@ autoload -Uz compinit
 compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu yes select
+zstyle ':completion:*' list-colors 'exfxcxdxbxegedabagacad'
 
 ### Colors
 ### OSX-specific color settings
