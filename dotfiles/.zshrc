@@ -57,7 +57,6 @@ autoload -Uz compinit
 compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu yes select
-zstyle ':completion:*' list-colors 'exfxcxdxbxegedabagacad'
 
 ### Colors
 ### OSX-specific color settings
@@ -66,6 +65,9 @@ then
 	export CLICOLOR=1
 	export LSCOLORS=gxfxbxdxcxegedabagacad
 	export LS_COLORS='di=36;40:ln=35;40:so=31;40:pi=33;40:ex=32;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+
+	# Colorize dir completion
+	zstyle ':completion:*' list-colors 'exfxcxdxbxegedabagacad'
 
 	# Enable ls colors
 	if [ "$DISABLE_LS_COLORS" != "true" ]
