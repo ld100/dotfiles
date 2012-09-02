@@ -57,6 +57,9 @@ autoload -Uz compinit
 compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu yes select
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
+    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 ### Colors
 ### OSX-specific color settings
