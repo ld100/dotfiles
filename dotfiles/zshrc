@@ -237,7 +237,16 @@ function adility_demo_console() {
 
 # My Utils
 function clear_dns_cache() {
-	dscacheutil -flushcache
+	if [ `uname` = "Darwin" ]; then
+		dscacheutil -flushcache
+	elif [ `uname` = "Linux" ]; then
+		if [[ -x =nscd ]]; then
+			sudo /etc/init.d/nscd restart
+		else
+			echo "Nothing to flush: nscd is not installed"
+		fi
+	fi
+	
 }
 
 function start_pg() {
