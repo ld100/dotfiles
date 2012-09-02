@@ -298,6 +298,11 @@ function install_osx_goodies() {
 	fi
 }
 
+function update_configs() {
+	cd ~/.dotfiles && git pull
+	cd $OLDPWD
+}
+
 
 ### Git Functions
 zsh_git_invalidate_vars() {
