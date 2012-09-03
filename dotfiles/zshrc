@@ -219,7 +219,7 @@ alias tmuxinate="tmux attach || tmux new"
 
 ### Functions
 
-# Prompt-specific
+#### Prompt-specific
 function prompt_char {
 	git branch >/dev/null 2>/dev/null && echo '±' && return
 	hg root >/dev/null 2>/dev/null && echo '☿' && return
@@ -235,7 +235,7 @@ function adility_demo_console() {
 	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
 }
 
-# My Utils
+#### My Utils
 function clear_dns_cache() {
 	if [ `uname` = "Darwin" ]; then
 		dscacheutil -flushcache
@@ -248,6 +248,23 @@ function clear_dns_cache() {
 	fi
 	
 }
+
+# Prefer ipython for interactive shell
+smart_python () {
+	# this function is actually rather dumb
+	if [[ -n $1 ]]; then
+		python $argv
+	else
+		#if no parameters were given, then assume we want an ipython shell
+		if [[ -n $commands[ipython] ]]; then
+			ipython
+		else
+			python
+		fi
+	fi
+}
+
+alias py=smart_python
 
 function start_pg() {
 	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
