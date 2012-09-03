@@ -258,14 +258,14 @@ function stop_pg() {
 }
 
 function _install_linux_goodies() {
-	alias install_everything = ""
+	alias install_everything=""
 	if [[ -x =apt-get ]]; then
-		alias install_everything="	sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
+		alias install_everything="sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
 		sysstat ccze pv logrotate rkhunter etckeeper"
 	else
 		echo "Sorry, only debian-based distros are currently supported"
 		if [[ -x =yum ]]; then
-			alias install_everything = ""
+			alias install_everything=""
 		fi
 	fi
 	
