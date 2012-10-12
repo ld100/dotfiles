@@ -26,6 +26,13 @@ then
 	export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
+
+### Linux-specific settings
+if [ `uname` = "Linux" ];
+then
+	export TERM=xterm
+fi
+
 ### History
 # If I type cd and then cd again, only save the last one
 setopt HIST_IGNORE_DUPS
