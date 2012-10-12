@@ -1,4 +1,4 @@
-kielxsrv01
+Host kielxsrv01
 	User alexanderlo
 	HostName kielxsrv01
 	Port 22
