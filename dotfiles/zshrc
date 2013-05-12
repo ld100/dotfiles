@@ -223,6 +223,7 @@ alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
 alias tmuxinate="tmux attach || tmux new"
+alias unzipall="for z in *.zip; do unzip $z; done"
 
 ### Functions
 
