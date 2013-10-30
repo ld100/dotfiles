@@ -6,6 +6,7 @@ hgext.purge =
 hgext.color =
 hgext.fetch =
 hgext.mq =
+convert =
 
 [ui]
 username = Alexander Lockshyn <info@lab37.com>

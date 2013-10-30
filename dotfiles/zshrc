@@ -28,6 +28,9 @@ then
 	# GO language-specific settings
 	export GOPATH=$HOME/.go
 	export PATH=$PATH:$GOPATH/bin
+	
+	# Completions math
+	fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
 
