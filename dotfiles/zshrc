@@ -29,8 +29,12 @@ then
 	export GOPATH=$HOME/.go
 	export PATH=$PATH:$GOPATH/bin
 	
+	#Path for local "bin", that is used by Java/Play
+	export PATH=~/bin:$PATH
+	
 	# Completions math
 	fpath=(/usr/local/share/zsh-completions $fpath)
+	
 fi
 
 
