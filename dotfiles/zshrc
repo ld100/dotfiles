@@ -29,8 +29,12 @@ then
 	export GOPATH=$HOME/.go
 	export PATH=$PATH:$GOPATH/bin
 	
+	#Path for local "bin", that is used by Java/Play
+	export PATH=~/bin:$PATH
+	
 	# Completions math
 	fpath=(/usr/local/share/zsh-completions $fpath)
+	
 fi
 
 
@@ -262,6 +266,14 @@ function clear_dns_cache() {
 		fi
 	fi
 	
+}
+
+# Clear WhiteBoard image
+# Borrowed from https://gist.github.com/lelandbatey/8677901
+# USAGE: clean_whiteboard_photo source.jpg result.jpg
+# TODO: Check if ImageMagick is installed
+function clean_whiteboard_photo() {
+	convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
 }
 
 # Prefer ipython for interactive shell
