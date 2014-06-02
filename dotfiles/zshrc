@@ -34,6 +34,12 @@ then
 	
 	# Completions math
 	fpath=(/usr/local/share/zsh-completions $fpath)
+
+	# Python Settings
+	# pip should only run if there is a virtualenv currently activated
+	export PIP_REQUIRE_VIRTUALENV=true
+	# cache pip-installed packages to avoid re-downloading
+	export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 	
 fi
 
@@ -249,6 +255,9 @@ function virtualenv_info {
 	[ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
+function syspip {
+	PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
 
 function adility_demo_console() {
 	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'

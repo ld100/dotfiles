@@ -7,7 +7,7 @@
 [core]
     editor = mcedit
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Volumes/data/Users/ld100/.gitignore_global
+	excludesfile = /Users/ld100/.gitignore_global
 [color]
     diff = auto
     status = auto
