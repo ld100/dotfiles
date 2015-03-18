@@ -285,6 +285,11 @@ function clean_whiteboard_photo() {
 	convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
 }
 
+# Download a webpage and all of its CSS, JavaScript
+function scrap_webpage() {
+	wget -E -H -k -K -p "$1"
+}
+
 # Prefer ipython for interactive shell
 smart_python () {
 	# this function is actually rather dumb
@@ -326,6 +331,9 @@ function _install_linux_goodies() {
 }
 
 function _install_osx_goodies() {
+	# Create symlink for Sublime Text Editor
+	ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+	
 	if [[ -x =brew ]]; then
 		brew install wget midnight-commander pv
 	else
