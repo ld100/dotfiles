@@ -43,7 +43,7 @@ then
 
 	# Virtualenv Settings
 	export WORKON_HOME=$HOME/.virtualenvs
-[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
+	[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
 	
 fi
 
