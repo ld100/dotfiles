@@ -342,7 +342,7 @@ function _install_osx_goodies() {
 	ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
 	if [[ -x =brew ]]; then
-		brew install wget midnight-commander pv
+		brew install wget midnight-commander pv gawk gnu-sed
 	else
 		echo "Please install Homebrew first"
 	fi
