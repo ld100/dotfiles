@@ -266,6 +266,10 @@ function syspip {
 	PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
+function syspip3 {
+	PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
+
 function adility_demo_console() {
 	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
 }
