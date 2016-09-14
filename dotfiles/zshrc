@@ -23,7 +23,7 @@ then
 	export PATH=/usr/local/bin:$PATH
 	export PATH=/usr/local/sbin:$PATH
 	# export PATH=/usr/local/share/python:$PATH
-	export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 	# Java language-specific settings
 	export JAVA_HOME=$(/usr/libexec/java_home)
@@ -105,7 +105,7 @@ RPROMPT='%{$fg[magenta]%}$(get_git_prompt_info)%{$reset_color%}'
 autoload -U colors && colors
 
 ### RVM integration
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 ### Show Git Branch vars
 typeset -ga preexec_functions
