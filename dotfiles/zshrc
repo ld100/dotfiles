@@ -301,6 +301,11 @@ function scrap_webpage() {
 	wget -E -H -k -K -p "$1"
 }
 
+# Update all GIT repos in specific directory
+function update_repos() {
+	find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
+}
+
 # Prefer ipython for interactive shell
 smart_python () {
 	# this function is actually rather dumb
