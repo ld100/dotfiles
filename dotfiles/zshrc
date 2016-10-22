@@ -23,7 +23,7 @@ then
 	export PATH=/usr/local/bin:$PATH
 	export PATH=/usr/local/sbin:$PATH
 	# export PATH=/usr/local/share/python:$PATH
-	export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 	# Java language-specific settings
 	export JAVA_HOME=$(/usr/libexec/java_home)
@@ -105,7 +105,7 @@ RPROMPT='%{$fg[magenta]%}$(get_git_prompt_info)%{$reset_color%}'
 autoload -U colors && colors
 
 ### RVM integration
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 ### Show Git Branch vars
 typeset -ga preexec_functions
@@ -266,6 +266,10 @@ function syspip {
 	PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
+function syspip3 {
+	PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
+
 function adility_demo_console() {
 	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
 }
@@ -295,6 +299,11 @@ function clean_whiteboard_photo() {
 # Download a webpage and all of its CSS, JavaScript
 function scrap_webpage() {
 	wget -E -H -k -K -p "$1"
+}
+
+# Update all GIT repos in specific directory
+function update_repos() {
+	find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
 }
 
 # Prefer ipython for interactive shell
