@@ -345,6 +345,15 @@ function docker_kill_dangling() {
 	docker rmi $(docker images -q -f dangling=true) --force
 }
 
+function docker_prune_cache() {
+	if [ `uname` = "Darwin" ];
+	then
+		echo "Removing OSX Docker cache..."
+		rm -rf $HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
+		echo "Done."
+	fi
+}
+
 function _install_linux_goodies() {
 	alias install_everything=""
 	if [[ -x =apt-get ]]; then
