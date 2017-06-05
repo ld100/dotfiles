@@ -270,10 +270,6 @@ function syspip3 {
 	PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
 }
 
-function adility_demo_console() {
-	ssh -t deployer@developer.adilitydemo.com '/var/data/www/apps/adilityshop_apidemo/current/script/console apidemo'
-}
-
 #### My Utils
 function clear_dns_cache() {
 	if [ `uname` = "Darwin" ]; then
@@ -302,9 +298,11 @@ function scrap_webpage() {
 }
 
 # Update all GIT repos in specific directory
-function update_repos() {
-	find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
+update_repos() {
+	# find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
+	find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
 }
+alias gitup=update_repos
 
 # Prefer ipython for interactive shell
 smart_python () {
@@ -329,6 +327,22 @@ function start_pg() {
 
 function stop_pg() {
 	pg_ctl -D /usr/local/var/postgres stop -s -m fast
+}
+
+function docker_kill_running() {
+	docker kill $(docker ps -q)
+}
+
+function docker_kill_stopped() {
+	docker rm $(docker ps -a -q) --force
+}
+
+function docker_kill_all() {
+	docker rmi $(docker images -q) --force
+}
+
+function docker_kill_dangling() {
+	docker rmi $(docker images -q -f dangling=true) --force
 }
 
 function _install_linux_goodies() {
