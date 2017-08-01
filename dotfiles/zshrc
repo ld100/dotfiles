@@ -45,6 +45,7 @@ then
 	export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 	# Virtualenv Settings
+	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 	export WORKON_HOME=$HOME/.virtualenvs
 	[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
 

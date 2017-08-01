@@ -8,6 +8,7 @@
     editor = mcedit
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = /Users/ld100/.gitignore_global
+	autocrlf = input
 [color]
     diff = auto
     status = auto
