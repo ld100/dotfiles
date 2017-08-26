@@ -301,7 +301,11 @@ function scrap_webpage() {
 # Update all GIT repos in specific directory
 update_repos() {
 	# find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
-	find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+	if [ `uname` = "Darwin" ]; then
+		find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+	elif [ `uname` = "Linux" ]; then
+		ls | xargs -I{} git -C {} pull
+	fi
 }
 alias gitup=update_repos
 
@@ -323,11 +327,19 @@ smart_python () {
 alias py=smart_python
 
 function start_pg() {
-	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+	if [ `uname` = "Darwin" ]; then
+		pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+	elif [ `uname` = "Linux" ]; then
+		echo 'Not available on Linux'
+	fi
 }
 
 function stop_pg() {
-	pg_ctl -D /usr/local/var/postgres stop -s -m fast
+	if [ `uname` = "Darwin" ]; then
+		pg_ctl -D /usr/local/var/postgres stop -s -m fast
+	elif [ `uname` = "Linux" ]; then
+		echo 'Not available on Linux'
+	fi
 }
 
 function docker_kill_running() {
