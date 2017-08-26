@@ -1,7 +1,7 @@
 #!/bin/zsh
 # -*- mode: sh -*-
 # zsh configuration
-# (c) 2011 Alexander Lockshyn
+# (c) 2011-2017 Alexander Lockshyn
 # ld100 AT mourk.com
 #
 # Thanks to:
@@ -221,8 +221,6 @@ else
 fi
 
 
-
-
 ### Keyboard config
 # autoload zkbd
 # [[ ! -d ~/.zkbd ]] && mkdir ~/.zkbd
@@ -282,25 +280,30 @@ function clear_dns_cache() {
 			echo "Nothing to flush: nscd is not installed"
 		fi
 	fi
-
 }
 
 # Clear WhiteBoard image
 # Borrowed from https://gist.github.com/lelandbatey/8677901
 # USAGE: clean_whiteboard_photo source.jpg result.jpg
-# TODO: Check if ImageMagick is installed
 function clean_whiteboard_photo() {
-	convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
+	if [[ -x =convert ]]; then
+		convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
+	else
+		echo "Error: imagemagick is not installed"
+	fi
 }
 
 # Download a webpage and all of its CSS, JavaScript
 function scrap_webpage() {
-	wget -E -H -k -K -p "$1"
+	if [[ -x =wget ]]; then
+		wget -E -H -k -K -p "$1"
+	else
+		echo "Error: wget is not installed"
+	fi
 }
 
 # Update all GIT repos in specific directory
 update_repos() {
-	# find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
 	if [ `uname` = "Darwin" ]; then
 		find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
 	elif [ `uname` = "Linux" ]; then
@@ -338,10 +341,12 @@ function stop_pg() {
 	if [ `uname` = "Darwin" ]; then
 		pg_ctl -D /usr/local/var/postgres stop -s -m fast
 	elif [ `uname` = "Linux" ]; then
-		echo 'Not available on Linux'
+		echo "Not available on Linux"
 	fi
 }
 
+# TODO: Add goodies from Medium article
+# https://medium.com/statuscode/dockercheatsheet-9730ce03630d
 function docker_kill_running() {
 	docker kill $(docker ps -q)
 }
@@ -359,11 +364,12 @@ function docker_kill_dangling() {
 }
 
 function docker_prune_cache() {
-	if [ `uname` = "Darwin" ];
-	then
+	if [ `uname` = "Darwin" ]; then
 		echo "Removing OSX Docker cache..."
 		rm -rf $HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
 		echo "Done."
+	else
+		echo "No need in cleaning up docker cache outside OSX."
 	fi
 }
 
@@ -378,7 +384,6 @@ function _install_linux_goodies() {
 			echo "RPM-based distros are not supported yet"
 		fi
 	fi
-
 	echo "Installation finished"
 }
 
@@ -468,7 +473,6 @@ gitbranch() {
 		echo "$git_branch"
 	fi
 }
-
 
 chpwd_functions+='zsh_git_chpwd_update_vars'
 	zsh_git_chpwd_update_vars() {
