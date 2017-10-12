@@ -30,7 +30,8 @@ then
 
 	# GO language-specific settings
 	export GOPATH=$HOME/.go
-	export PATH=$PATH:$GOPATH/bin
+	export GOROOT=/usr/local/opt/go/libexec
+	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 	#Path for local "bin", that is used by Java/Play
 	export PATH=~/bin:$PATH
