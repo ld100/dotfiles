@@ -8,5 +8,5 @@ git, zsh
 
 ## Installation
 
-`git clone https://github.com/ld100/dotfiles.git ~/.dotfiles`
-`zsh ~/.dotfiles/install.sh`
+Step 1: clone repo to .dotfiles: `git clone https://github.com/ld100/dotfiles.git ~/.dotfiles`
+Step 2: run installer: `zsh ~/.dotfiles/install.sh`
