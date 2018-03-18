@@ -32,6 +32,7 @@ then
 	export GOPATH=$HOME/.go
 	export GOROOT=/usr/local/opt/go/libexec
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+	# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
 	#Path for local "bin", that is used by Java/Play
 	export PATH=~/bin:$PATH
