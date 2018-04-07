@@ -380,7 +380,7 @@ function docker_prune_cache() {
 function _install_linux_goodies() {
 	alias install_everything=""
 	if [[ -x =apt-get ]]; then
-		sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget \
+		sudo apt-get install nmap netdiag htop mc screen tmux vim ne wget ncdu \
 		sysstat ccze pv logrotate rkhunter etckeeper
 	else
 		echo "Sorry, only debian-based distros are currently supported"

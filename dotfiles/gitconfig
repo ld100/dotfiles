@@ -50,3 +50,5 @@
 	required = true
 [commit]
 	template = /Users/ld100/.stCommitMsg
+[credential]
+	helper = cache
