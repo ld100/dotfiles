@@ -52,3 +52,5 @@
 	template = /Users/ld100/.stCommitMsg
 [credential]
 	helper = cache
+[pull]
+	rebase = false
