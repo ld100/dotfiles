@@ -9,6 +9,7 @@
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = /Users/ld100/.gitignore_global
 	autocrlf = input
+	fileMode = true
 [color]
     diff = auto
     status = auto
