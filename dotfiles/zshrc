@@ -73,6 +73,9 @@ then
 	# Java home
 	export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 
+	# Dotnet support
+	export PATH="$PATH:$HOME/.dotnet/tools/"
+
 	# Node version manager
 	export NVM_DIR="$HOME/.nvm"
 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
