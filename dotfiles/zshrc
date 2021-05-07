@@ -75,6 +75,12 @@ then
 	export ANDROID_HOME=$HOME/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools
 	export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+	# Enabling NodeJS
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 fi
 
 ### History
@@ -510,3 +516,6 @@ get_git_prompt_info() {
 	test -n "$__CURRENT_GIT_VARS_INVALID" && zsh_git_compute_vars
 	echo $__CURRENT_GIT_BRANCH
 }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/terraform/terraform terraform
