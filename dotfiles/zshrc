@@ -70,6 +70,17 @@ then
 	export PATH="$PATH:$GOPATH/bin"
 	# export GOBIN=$HOME/go/bin:$PATH
 
+	# Java home
+	export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+
+	# Dotnet support
+	export PATH="$PATH:$HOME/.dotnet/tools/"
+
+	# Node version manager
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 	export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 	export PATH=$PATH:~/flutter/bin
 	export ANDROID_HOME=$HOME/Android/Sdk
