@@ -27,6 +27,7 @@ then
 
 	# Java language-specific settings
 	export JAVA_HOME=$(/usr/libexec/java_home)
+	export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 	# GO language-specific settings
 	export GOPATH=$HOME/.go
