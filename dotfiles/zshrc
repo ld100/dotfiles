@@ -295,7 +295,7 @@ function swagger {
   echo "Running go-swagger ${SWAGGER_VER}"
   echo "##################################"
   echo ""
-  docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -w $(pwd) quay.io/goswagger/swagger:${SWAGGER_VER} "$@";
+  docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger:${SWAGGER_VER} "$@";
 }
 
 #### Prompt-specific
