@@ -3,7 +3,7 @@
     token = c696df974c45fb276b14cf15ce3508e8
 [user]
 	name = Alexander Lockshyn
-	email = info@lab37.com
+	email = ld100@users.noreply.github.com
 [core]
     editor = mcedit
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -41,14 +41,15 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = current
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [commit]
 	template = /Users/ld100/.stCommitMsg
 [credential]
