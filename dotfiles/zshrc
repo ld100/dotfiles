@@ -284,7 +284,7 @@ alias l="ls -CF"
 alias tmuxinate="tmux attach || tmux new"
 alias unzipall="for z in *.zip; do unzip $z; done"
 alias killpods="kubectl delete pod --grace-period=0 --force"
-# alias swagger='docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger'
+alias flippit="export GOPRIVATE=github.com/wishabi/*"
 
 ### Functions
 
