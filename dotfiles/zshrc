@@ -144,6 +144,10 @@ autoload -U colors && colors
 ### RVM integration
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# ASDF Integration
+# See: https://asdf-vm.com/guide/getting-started.html
+[[ -s "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+
 ### Show Git Branch vars
 typeset -ga preexec_functions
 typeset -ga precmd_functions
