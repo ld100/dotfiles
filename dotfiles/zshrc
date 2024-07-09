@@ -72,7 +72,7 @@ then
 	# export DOCKER_CERT_PATH=/c/Users/ld100/.docker/machine/machines/default
 	# export NO_PROXY=192.168.99.100
 
-	export GOPATH=${HOME}/.go
+	export GOPATH=$HOME/.go
 	export PATH="$PATH:$GOPATH/bin"
 	# export GOBIN=$HOME/.go/bin:$PATH
 
