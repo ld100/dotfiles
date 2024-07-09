@@ -23,7 +23,7 @@ then
 	export PATH=/usr/local/bin:$PATH
 	export PATH=/usr/local/sbin:$PATH
 	# export PATH=/usr/local/share/python:$PATH
-	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+	# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 	# Java language-specific settings
 	export JAVA_HOME=$(/usr/libexec/java_home)
@@ -36,9 +36,9 @@ then
 	# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
 	# Node Version Manager
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-	[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+	# export NVM_DIR="$HOME/.nvm"
+	# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+	# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 	#Path for local "bin", that is used by Java/Play
 	export PATH=~/bin:$PATH
@@ -83,9 +83,9 @@ then
 	export PATH="$PATH:$HOME/.dotnet/tools/"
 
 	# Node version manager
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	# export NVM_DIR="$HOME/.nvm"
+	# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 	export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 	export PATH=$PATH:~/flutter/bin
@@ -142,7 +142,7 @@ RPROMPT='%{$fg[magenta]%}$(get_git_prompt_info)%{$reset_color%}'
 autoload -U colors && colors
 
 ### RVM integration
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # ASDF Integration
 # See: https://asdf-vm.com/guide/getting-started.html

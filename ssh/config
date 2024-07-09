@@ -3,3 +3,7 @@ Host kielxsrv01
 	HostName kielxsrv01
 	Port 22
 	
+Host gw2
+	Hostname gw2.wishabi.ca
+	User ld100
+	ForwardAgent  yes
