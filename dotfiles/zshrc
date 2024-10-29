@@ -335,6 +335,16 @@ function clear_dns_cache() {
 	fi
 }
 
+# Automatically update the system.
+# Designed specifically for MacOS and Debian-based Linux
+function autoupdate() {
+	if [ `uname` = "Darwin" ]; then
+		brew update && brew upgrade && brew cleanup
+	elif [ `uname` = "Linux" ]; then
+		sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove
+	fi
+}
+
 # Clear WhiteBoard image
 # Borrowed from https://gist.github.com/lelandbatey/8677901
 # USAGE: clean_whiteboard_photo source.jpg result.jpg
