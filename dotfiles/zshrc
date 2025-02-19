@@ -31,7 +31,7 @@ then
 
 	# GO language-specific settings
 	export GOPATH=$HOME/.go
-	export GOROOT="$(brew --prefix golang)/libexec"
+	# export GOROOT="$(brew --prefix golang)/libexec"
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 	# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
