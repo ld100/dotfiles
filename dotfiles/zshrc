@@ -146,7 +146,8 @@ autoload -U colors && colors
 
 # ASDF Integration
 # See: https://asdf-vm.com/guide/getting-started.html
-[[ -s "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+# Disabled, to allow newer binary versions
+# [[ -s "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 
 ### Show Git Branch vars
 typeset -ga preexec_functions
