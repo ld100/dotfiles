@@ -148,6 +148,7 @@ autoload -U colors && colors
 # See: https://asdf-vm.com/guide/getting-started.html
 # Disabled, to allow newer binary versions
 # [[ -s "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 ### Show Git Branch vars
 typeset -ga preexec_functions
