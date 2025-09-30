@@ -26,7 +26,9 @@ then
 	# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 	# Java language-specific settings
-	export JAVA_HOME=$(/usr/libexec/java_home)
+	# /usr/libexec/java_home doesn't work out of the box anymore
+	# export JAVA_HOME=$(/usr/libexec/java_home)
+	export JAVA_HOME="/opt/homebrew/opt/openjdk"
 	export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 	# GO language-specific settings
