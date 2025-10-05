@@ -379,6 +379,14 @@ update_repos() {
 }
 alias gitup=update_repos
 
+# Reset all git repos in current directory to HEAD
+reset_repos() {
+	for d in */; do 
+		echo "==> $d"; (cd "$d" && git reset HEAD --hard && git fetch --prune);
+	done
+}
+alias gitreset=reset_repos
+
 # Prefer ipython for interactive shell
 smart_python () {
 	# this function is actually rather dumb
