@@ -293,7 +293,7 @@ alias tmuxinate="tmux attach || tmux new"
 alias unzipall="for z in *.zip; do unzip $z; done"
 alias killpods="kubectl delete pod --grace-period=0 --force"
 alias flippit="export GOPRIVATE=github.com/wishabi,buf.build/gen/go"
-alias gitpull="ls | xargs -I{} git -C {} pull"
+alias gitpull="ls | xargs -I{} git -C {} pull --rebase"
 
 ### Functions
 
