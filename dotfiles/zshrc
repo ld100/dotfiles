@@ -404,6 +404,9 @@ smart_python () {
 
 alias py=smart_python
 
+# ESP-IDF environment
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 function start_pg() {
 	if [ `uname` = "Darwin" ]; then
 		pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
