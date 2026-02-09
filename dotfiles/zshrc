@@ -44,6 +44,7 @@ then
 	# .NET support
 	export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
 	export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
+	export PATH="$PATH:$HOME/.dotnet/tools"
 
 	# Node Version Manager
 	# export NVM_DIR="$HOME/.nvm"
