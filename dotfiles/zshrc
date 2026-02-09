@@ -41,6 +41,10 @@ then
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 	# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
+	# .NET support
+	export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
+	export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
+
 	# Node Version Manager
 	# export NVM_DIR="$HOME/.nvm"
 	# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
