@@ -43,7 +43,7 @@ then
 
 	# .NET support
 	export PATH="/opt/homebrew/opt/dotnet/bin:$PATH"
-	export DOTNET_ROOT="/opt/homebrew/Cellar/dotnet/10.0.102/libexec"
+	export DOTNET_ROOT="/opt/homebrew/Cellar/dotnet/10.0.103/libexec"
 	export PATH="$PATH:$HOME/.dotnet/tools"
 
 	# Node Version Manager
