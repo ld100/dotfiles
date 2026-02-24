@@ -89,7 +89,8 @@ then
 	export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 
 	# Dotnet support
-	export PATH="$PATH:$HOME/.dotnet/tools/"
+	export DOTNET_ROOT=$HOME/.dotnet
+	export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 	# Node version manager
 	# export NVM_DIR="$HOME/.nvm"
@@ -575,3 +576,4 @@ get_git_prompt_info() {
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/terraform/terraform terraform
+
