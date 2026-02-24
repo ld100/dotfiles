@@ -41,6 +41,11 @@ then
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 	# command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
 
+	# .NET support
+	export PATH="/opt/homebrew/opt/dotnet/bin:$PATH"
+	export DOTNET_ROOT="/opt/homebrew/Cellar/dotnet/10.0.103/libexec"
+	export PATH="$PATH:$HOME/.dotnet/tools"
+
 	# Node Version Manager
 	# export NVM_DIR="$HOME/.nvm"
 	# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -411,6 +416,9 @@ smart_python () {
 }
 
 alias py=smart_python
+
+# ESP-IDF environment
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
 
 function start_pg() {
 	if [ `uname` = "Darwin" ]; then
