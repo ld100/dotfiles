@@ -90,6 +90,9 @@ then
 	# Claude Code
 	export PATH="$HOME/.local/bin:$PATH"
 
+	# opencode
+	export PATH=/home/ld100/.opencode/bin:$PATH
+
 	# Java home
 	export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 
